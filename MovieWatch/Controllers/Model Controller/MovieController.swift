@@ -14,8 +14,8 @@ class MovieController {
     var movies: [Movie] = []
     
     // MARK: - CRUD Methods
-    func createMovie(title: String, director: String, releaseYear: Int, genre: String, watchDate: Date?) {
-        let movie = Movie(title: title, director: director, releaseYear: releaseYear, genre: genre, watchDate: watchDate ?? Date())
+    func createMovieWith(title: String, director: String, releaseYear: String, genre: String, watchDate: Date?, isWatched: Bool) {
+        let movie = Movie(title: title, director: director, releaseYear: releaseYear, genre: genre, watchDate: watchDate, isWatched: isWatched)
         movies.append(movie)
         saveToPersistenceStore()
     }
@@ -26,12 +26,13 @@ class MovieController {
         saveToPersistenceStore()
     }
     
-    func updateMovie(movie: Movie, title: String, director: String, releaseYear: Int, genre: String, watchDate: Date?) {
+    func updateMovie(movie: Movie, title: String, director: String, releaseYear: String, genre: String, watchDate: Date?, isWatched: Bool) {
         movie.title = title
         movie.director = director
         movie.releaseYear = releaseYear
         movie.genre = genre
         movie.watchDate = watchDate
+        movie.isWatched = isWatched
         saveToPersistenceStore()
     }
     
@@ -62,4 +63,4 @@ class MovieController {
             print(error.localizedDescription)
         }
     }
-}
+}//End of Class

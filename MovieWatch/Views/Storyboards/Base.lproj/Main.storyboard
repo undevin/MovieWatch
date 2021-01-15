@@ -11,20 +11,51 @@
         <!--Movies-->
         <scene sceneID="4ql-24-hfN">
             <objects>
-                <tableViewController id="5C5-4c-2Jf" sceneMemberID="viewController">
+                <tableViewController id="5C5-4c-2Jf" customClass="MovieListTableViewController" customModule="MovieWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9zI-Aa-yDL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vnP-gt-hCl">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="75" id="vnP-gt-hCl" customClass="MovieTableViewCell" customModule="MovieWatch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnP-gt-hCl" id="O9E-ys-Pvk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Movie Title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTu-Ff-WsB">
+                                            <rect key="frame" x="10" y="10" width="95" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(genre)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgw-QO-GkL">
+                                            <rect key="frame" x="10" y="47" width="50.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRO-AY-fgC">
+                                            <rect key="frame" x="354" y="20.5" width="30" height="34"/>
+                                            <connections>
+                                                <action selector="movieWatchedButtonTapped:" destination="vnP-gt-hCl" eventType="touchUpInside" id="Uon-2r-dkO"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="IRO-AY-fgC" secondAttribute="trailing" constant="30" id="8TR-xb-ahd"/>
+                                        <constraint firstItem="JTu-Ff-WsB" firstAttribute="leading" secondItem="O9E-ys-Pvk" secondAttribute="leading" constant="10" id="9Jo-iB-es6"/>
+                                        <constraint firstAttribute="bottom" secondItem="Pgw-QO-GkL" secondAttribute="bottom" constant="10" id="DEU-Dy-Uol"/>
+                                        <constraint firstItem="Pgw-QO-GkL" firstAttribute="leading" secondItem="O9E-ys-Pvk" secondAttribute="leading" constant="10" id="YZG-gw-BLF"/>
+                                        <constraint firstItem="IRO-AY-fgC" firstAttribute="centerY" secondItem="O9E-ys-Pvk" secondAttribute="centerY" id="aa6-1N-X7b"/>
+                                        <constraint firstItem="JTu-Ff-WsB" firstAttribute="top" secondItem="O9E-ys-Pvk" secondAttribute="top" constant="10" id="nnx-RZ-vO9"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="genreLabel" destination="Pgw-QO-GkL" id="cdd-Ij-v9D"/>
+                                    <outlet property="movieTitleLabel" destination="JTu-Ff-WsB" id="Fj9-kl-Z84"/>
+                                    <outlet property="movieWatchedLabel" destination="IRO-AY-fgC" id="icQ-rg-cxb"/>
                                     <segue destination="lvt-Ta-kg1" kind="show" identifier="toMovieDetail" id="a3l-SL-wIT"/>
                                 </connections>
                             </tableViewCell>
@@ -46,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="236" y="-6"/>
         </scene>
-        <!--View Controller-->
+        <!--Movie Detail View Controller-->
         <scene sceneID="BW3-YN-Wyv">
             <objects>
-                <viewController id="lvt-Ta-kg1" sceneMemberID="viewController">
+                <viewController id="lvt-Ta-kg1" customClass="MovieDetailViewController" customModule="MovieWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bC1-EN-fzf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +107,9 @@
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xp0-5C-k0R">
                                 <rect key="frame" x="0.0" y="429" width="414" height="216"/>
+                                <connections>
+                                    <action selector="watchDatePicker:" destination="lvt-Ta-kg1" eventType="valueChanged" id="0kH-TF-NBT"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9to-Pn-1wJ"/>
@@ -99,8 +133,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jZj-O5-CHK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gTT-J7-wc3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gTT-J7-wc3">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="lvt-Ta-kg1" id="Sgs-cF-UHd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="directorTextField" destination="8bK-vl-giQ" id="Vgv-Mf-WKc"/>
+                        <outlet property="genreTextField" destination="drw-Gu-doK" id="b5e-sg-qfX"/>
+                        <outlet property="movieTitleTextField" destination="aG7-gx-Pac" id="QKi-lB-Dy0"/>
+                        <outlet property="releaseYearTextField" destination="5Q2-2E-JDe" id="coY-0R-flo"/>
+                        <outlet property="watchedDatePicker" destination="Xp0-5C-k0R" id="hBA-Dk-2fO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3I-Aw-ryf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

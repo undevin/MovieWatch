@@ -11,16 +11,18 @@ class Movie: Codable {
     
     var title: String
     var director: String?
-    var releaseYear: Int?
+    var releaseYear: String?
     var genre: String?
     var watchDate: Date?
+    var isWatched: Bool
     
-    init(title: String, director: String?, releaseYear: Int?, genre: String?, watchDate: Date?) {
+    init(title: String, director: String?, releaseYear: String?, genre: String?, watchDate: Date?, isWatched: Bool = false) {
         self.title = title
         self.director = director
         self.releaseYear = releaseYear
         self.genre = genre
         self.watchDate = watchDate
+        self.isWatched = isWatched
     }
     
 }//End of Class
