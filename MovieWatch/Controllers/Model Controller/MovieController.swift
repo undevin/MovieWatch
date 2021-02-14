@@ -41,7 +41,6 @@ class MovieController {
         saveToPersistenceStore()
     }
     
-    
     func fileURL() -> URL {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = urls[0].appendingPathComponent("Movies.json")

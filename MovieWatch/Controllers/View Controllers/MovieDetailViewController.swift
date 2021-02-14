@@ -16,7 +16,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var watchedDatePicker: UIDatePicker!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()

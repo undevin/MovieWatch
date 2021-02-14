@@ -12,7 +12,7 @@ protocol MovieWatchedDelegate: AnyObject {
 }
 
 class MovieTableViewCell: UITableViewCell {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
