@@ -19,7 +19,12 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieWatchedLabel: UIButton!
     
     weak var delegate: MovieWatchedDelegate?
-    var movie: Movie?
+    var movie: Movie? {
+        didSet {
+            guard let movie = movie else { return }
+            updateViews(movie: movie)
+        }
+    }
     
     // MARK: - Actions
     @IBAction func movieWatchedButtonTapped(_ sender: Any) {
@@ -27,9 +32,13 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     // MARK: - Helper Functions
-    func updateViews() {
-        movieTitleLabel.text = movie?.title
-        
+    func updateViews(movie: Movie) {
+        movieTitleLabel.text = movie.title
+        genreLabel.text = movie.genre
+        if movie.isWatched {
+            movieWatchedLabel.setBackgroundImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        } else {
+            movieWatchedLabel.setBackgroundImage(UIImage(systemName: "square"), for: .normal)
+        }
     }
-
-}
+}//End of Class

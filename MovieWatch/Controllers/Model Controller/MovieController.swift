@@ -20,12 +20,6 @@ class MovieController {
         saveToPersistenceStore()
     }
     
-    func deleteMovie(movie: Movie) {
-        guard let index = movies.firstIndex(of: movie) else { return }
-        movies.remove(at: index)
-        saveToPersistenceStore()
-    }
-    
     func updateMovie(movie: Movie, title: String, director: String, releaseYear: String, genre: String, watchDate: Date?, isWatched: Bool) {
         movie.title = title
         movie.director = director
@@ -35,6 +29,18 @@ class MovieController {
         movie.isWatched = isWatched
         saveToPersistenceStore()
     }
+    
+    func toggleMovieIsWatched(movie: Movie) {
+        movie.isWatched.toggle()
+        saveToPersistenceStore()
+    }
+    
+    func deleteMovie(movie: Movie) {
+        guard let index = movies.firstIndex(of: movie) else { return }
+        movies.remove(at: index)
+        saveToPersistenceStore()
+    }
+    
     
     func fileURL() -> URL {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

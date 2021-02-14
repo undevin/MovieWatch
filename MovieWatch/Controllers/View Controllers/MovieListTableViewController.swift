@@ -27,6 +27,9 @@ class MovieListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
+        let movie = MovieController.shared.movies[indexPath.row]
+        cell.delegate = self
+        cell.updateViews(movie: movie)
 
         return cell
     }
@@ -54,6 +57,9 @@ class MovieListTableViewController: UITableViewController {
 // MARK: - Extension
 extension MovieListTableViewController: MovieWatchedDelegate {
     func movieWatchedButtonTapped(cell: MovieTableViewCell) {
-        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let movie = MovieController.shared.movies[indexPath.row]
+        MovieController.shared.toggleMovieIsWatched(movie: movie)
+        cell.updateViews(movie: movie)
     }
 }

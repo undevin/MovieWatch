@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="75" id="vnP-gt-hCl" customClass="MovieTableViewCell" customModule="MovieWatch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" id="vnP-gt-hCl" customClass="MovieTableViewCell" customModule="MovieWatch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnP-gt-hCl" id="O9E-ys-Pvk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Movie Title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTu-Ff-WsB">
@@ -30,14 +30,17 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(genre)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgw-QO-GkL">
-                                            <rect key="frame" x="10" y="47" width="50.5" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="(genre)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgw-QO-GkL">
+                                            <rect key="frame" x="10" y="46" width="50.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRO-AY-fgC">
-                                            <rect key="frame" x="354" y="20.5" width="30" height="34"/>
+                                            <rect key="frame" x="351.5" y="22.5" width="32.5" height="29"/>
+                                            <state key="normal" image="square" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
+                                            </state>
                                             <connections>
                                                 <action selector="movieWatchedButtonTapped:" destination="vnP-gt-hCl" eventType="touchUpInside" id="Uon-2r-dkO"/>
                                             </connections>
@@ -49,6 +52,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Pgw-QO-GkL" secondAttribute="bottom" constant="10" id="DEU-Dy-Uol"/>
                                         <constraint firstItem="Pgw-QO-GkL" firstAttribute="leading" secondItem="O9E-ys-Pvk" secondAttribute="leading" constant="10" id="YZG-gw-BLF"/>
                                         <constraint firstItem="IRO-AY-fgC" firstAttribute="centerY" secondItem="O9E-ys-Pvk" secondAttribute="centerY" id="aa6-1N-X7b"/>
+                                        <constraint firstItem="Pgw-QO-GkL" firstAttribute="top" secondItem="JTu-Ff-WsB" secondAttribute="bottom" constant="15" id="mvs-d3-Hju"/>
                                         <constraint firstItem="JTu-Ff-WsB" firstAttribute="top" secondItem="O9E-ys-Pvk" secondAttribute="top" constant="10" id="nnx-RZ-vO9"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -111,12 +115,20 @@
                                     <action selector="watchDatePicker:" destination="lvt-Ta-kg1" eventType="valueChanged" id="0kH-TF-NBT"/>
                                 </connections>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Watched Date: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa6-Wg-C9c">
+                                <rect key="frame" x="41.5" y="388" width="122" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9to-Pn-1wJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Pa6-Wg-C9c" firstAttribute="leading" secondItem="aG7-gx-Pac" secondAttribute="leading" id="53l-Od-PWs"/>
                             <constraint firstItem="Xp0-5C-k0R" firstAttribute="centerX" secondItem="9to-Pn-1wJ" secondAttribute="centerX" id="7Dq-nr-2Z7"/>
                             <constraint firstItem="aG7-gx-Pac" firstAttribute="top" secondItem="9to-Pn-1wJ" secondAttribute="top" constant="30" id="7Tv-CF-0zo"/>
+                            <constraint firstItem="Xp0-5C-k0R" firstAttribute="top" secondItem="Pa6-Wg-C9c" secondAttribute="bottom" constant="20" id="9fz-hA-NaM"/>
                             <constraint firstItem="drw-Gu-doK" firstAttribute="top" secondItem="5Q2-2E-JDe" secondAttribute="bottom" constant="25" id="GFQ-46-HmJ"/>
                             <constraint firstItem="drw-Gu-doK" firstAttribute="width" secondItem="bC1-EN-fzf" secondAttribute="width" multiplier="0.6" id="KVt-YF-koR"/>
                             <constraint firstItem="8bK-vl-giQ" firstAttribute="top" secondItem="aG7-gx-Pac" secondAttribute="bottom" constant="25" id="Uta-PI-iuH"/>
@@ -172,6 +184,7 @@
         <segue reference="a3l-SL-wIT"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

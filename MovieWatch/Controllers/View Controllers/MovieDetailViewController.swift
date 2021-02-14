@@ -19,6 +19,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
     // MARK: - Properties
@@ -33,11 +34,20 @@ class MovieDetailViewController: UIViewController {
         } else {
             MovieController.shared.createMovieWith(title: title, director: directorTextField.text ?? "", releaseYear: releaseYearTextField.text ?? "", genre: genreTextField.text ?? "", watchDate: watchedDatePicker.date, isWatched: false)
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func watchDatePicker(_ sender: Any) {
-        
+        self.date = watchedDatePicker.date
     }
     
-    
-}
+    // MARK: - Methods
+    func updateViews() {
+        guard let movie = movie else { return }
+        movieTitleTextField.text = movie.title
+        directorTextField.text = movie.director
+        releaseYearTextField.text = movie.releaseYear
+        genreTextField.text = movie.genre
+        watchedDatePicker.date = movie.watchDate ?? Date()
+    }
+}//End of Class
